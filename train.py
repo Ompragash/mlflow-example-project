@@ -26,5 +26,8 @@ def train_random_forest(n_estimators):
         mlflow.sklearn.log_model(model, "model")
 
 if __name__ == "__main__":
-    train_random_forest(n_estimators=100)
+    parser = argparse.ArgumentParser(description='Train a Random Forest model.')
+    parser.add_argument('--n_estimators', type=int, default=100, help='Number of trees in the forest.')
+    args = parser.parse_args()
 
+    train_random_forest(n_estimators=args.n_estimators)
